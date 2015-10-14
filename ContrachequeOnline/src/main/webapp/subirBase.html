@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/fileinput.css">
+<script type="text/javascript" src="js/fileinput.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.css">
+
+<style>
+fieldset.fsStyle {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: large;
+	font-weight: normal;
+	border: 1px solid #999999;
+	padding: 4px;
+	margin: 5px;
+}
+
+legend.legendStyle {
+	font-size: 90%;
+	color: #888888;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+legend {
+	width: auto;
+	border-bottom: 0px;
+}
+</style>
+
+
+</head>
+<body>
+
+	<div class="row">
+		<div class="row-fluid">
+			<div class="jumbotron">
+				<h2
+					style="text-align: center; font-size: 19.5px; font-weight: bold;">Subir
+					Base</h2>
+			</div>
+
+			<fieldset class="fsStyle">
+				<legend class="legendStyle">
+					<a data-toggle="collapse" data-target="#demo" href="#">Selecione
+						o Arquivo</a>
+				</legend>
+				<div class="row collapse in" id="demo">
+					<div id="divInput"
+						style="width: 90%; margin-left: 2%; margin-bottom: 2%;">
+						<input id="input-23" type="file" data-show-preview="false">
+					</div>
+					<div id="divInputMensagem"
+						class="alert alert-success alert-block fade in"
+						style="width: 90%; margin-left: 2%; margin-bottom: 2%;">
+						<button class="close" data-dismiss="alert"
+							style="margin-right: 3%;">&times;</button>
+						<h5>Formatação do Arquivo .csv</h5>
+						<div>
+							<span style="font-size: 12px">FolhaCompetencia; RA_FILIAL;
+								RA_MAT; RA_CIC; RA_NomeCmp; cCusto; RV_TIPOCOD; RV_COD; RV_DESC;
+								FolhaQtd; FolhaValor; RA_BcAg; RA_OpCta; DataNascimento;
+								RA_FUNCAO; RA_SALARIO</span>
+						</div>
+						<div>
+							<span style="font-size: 11px; color: red;">Observação: É
+								necessário deletar a primeira linha do arquivo, referente ao
+								cabeçalho</span>
+						</div>
+					</div>
+					<div id="divCarregando"
+						style="margin-left: 2%; margin-bottom: 2%; display: none">
+						<img src="../img/icons/loading_blue.gif" /> Carregando...
+					</div>
+				</div>
+			</fieldset>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$("#input-23").fileinput(
+				{
+					layoutTemplates : {
+						main1 : "{preview}\n"
+								+ "<div class=\'input-group {class}\'>\n"
+								+ "   <div class=\'input-group-btn\'>\n"
+								+ "       {browse}\n" + "       {upload}\n"
+								+ "       {remove}\n" + "   </div>\n"
+								+ "   {caption}\n" + "</div>"
+					},
+					allowedFileExtensions : [ "csv" ],
+					maxFileSize : 10500
+				});
+	</script>
+</body>
+</html>
