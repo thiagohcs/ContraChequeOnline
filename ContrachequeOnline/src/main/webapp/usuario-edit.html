@@ -6,65 +6,61 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contracheque Online</title>
+<title>Contracheque Online - Cadastar Usuário</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/C:\dev\workspaceProjetoSoftware\ContrachequeOnline.css">
+<link rel="stylesheet"
+	href="css/C:\dev\workspaceProjetoSoftware\ContrachequeOnline.css">
 <link rel="stylesheet" href="css/jquery-ui.css">
 
 <script>
-jQuery(function($){
-       $("#login").mask("999.999.999-99");
-});
+	function formatar(mascara, documento) {
+		var i = documento.value.length;
+		var saida = mascara.substring(0, 1);
+		var texto = mascara.substring(i)
+
+		if (texto.substring(0, 1) != saida) {
+			documento.value += texto.substring(0, 1);
+		}
+	}
 </script>
-
-
 
 </head>
 <body>
 	<div class="container">
 		<div id="menu"></div>
 		<form class="well" role="form">
-			<div id="id-row" hidden="true" class="form-group">
-				<label for="id">id</label> <span id="id-text" class="form-control-static"></span>
-				<input id="id" type="hidden">
-			</div>
-				
+
 			<div class="form-group">
-				<label for="nome">Nome completo: </label>
-				<input id="nome" type="text" class="form-control">
+				<label for="nome">Nome completo: </label> <input id="nome"
+					type="text" class="form-control" maxlength="150"
+					required="required" pattern="[A-Za-z]*"
+					data-error="Por favor, preencha o campo.">
 				<div id="nome-message" class="label label-danger"></div>
 			</div>
-				
+
 			<div class="form-group">
-				<label for="login">CPF: </label>
-				<input id="login" type="text"   class="form-control">
+				<label for="login">CPF: </label> <input id="login" type="text"
+					class="form-control" name="login" maxlength="14"
+					onkeypress="formatar('###.###.###-##', this)"
+					pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required="required"
+					data-error="Por favor, preencha o campo no formato correto.">
 				<div id="login-message" class="label label-danger"></div>
 			</div>
-				
+
 			<div class="form-group">
-				<label for="senha">Senha: </label>
-				<input id="senha" type="password" maxlength="10" class="form-control">
+				<label for="senha">Senha: </label> <input id="senha" type="password"
+					maxlength="10" required="required"
+					data-error="Por favor, preencha o campo." class="form-control">
 				<div id="senha-message" class="label label-danger"></div>
 			</div>
-				
-<!-- 			<div class="form-group"> -->
-<!-- 				<label for="ativo">ativo</label> -->
-<!-- 				<input id="ativo" type="text" class="form-control"> -->
-<!-- 				<div id="ativo-message" class="label label-danger"></div> -->
-<!-- 			</div> -->
-				
-<!-- 			<div class="form-group"> -->
-<!-- 				<label for="perfil">perfil</label> -->
-<!-- 				<input id="perfil" type="text" class="form-control"> -->
-<!-- 				<div id="perfil-message" class="label label-danger"></div> -->
-<!-- 			</div> -->
-				
+
 			<div class="form-group">
-				<label for="empresa">Empresa: </label>
-				<input id="empresa" type="text" class="form-control">
+				<label for="empresa">Empresa: </label> <input id="empresa"
+					type="text" class="form-control" maxlength="50" required="required"
+					data-error="Por favor, preencha o campo.">
 				<div id="empresa-message" class="label label-danger"></div>
 			</div>
-				
+
 			<div class="form-group">
 				<button id="save" class="btn btn-primary">Salvar</button>
 				<button id="delete" class="btn btn-danger" hidden="true">Excluir</button>
@@ -72,10 +68,11 @@ jQuery(function($){
 			</div>
 		</form>
 	</div>
-<!-- 	<p class="demoiselle"> -->
-<!-- 		Aplicação de exemplo do Demoiselle <span id="demoiselle-version"></span> -->
-<!-- 	</p> -->
+	<!-- 	<p class="demoiselle"> -->
+	<!-- 		Aplicação de exemplo do Demoiselle <span id="demoiselle-version"></span> -->
+	<!-- 	</p> -->
 	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.maskedinput.js"></script>
 	<script type="text/javascript" src="js/lib/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/lib/datepicker-pt-BR.js"></script>
 	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
