@@ -16,5 +16,7 @@ public class UsuarioBC extends DelegateCrud<Usuario, Long, UsuarioDAO> {
 	public List<Usuario> find(String filter) {
 		return getDelegate().find(filter);
 	}
+	
+	
 
 }
