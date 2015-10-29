@@ -16,9 +16,8 @@
 		<div id="menu"></div>
 		<p>
 			<button id="new" class="btn btn-success">Cadastrar usuário</button>
-			<button id="new" class="btn btn-success">Atualizar perfil</button>
-			<button id="new" class="btn btn-success">Atualizar Status</button>
-			<button id="delete" class="btn btn-danger">Remover usuário</button>
+			<button id="update" class="btn btn-success" ata-toggle="modal" data-target="#myModal">Atualizar perfil</button>
+			<button id="status" class="btn btn-success">Atualizar Status</button>
 		</p>
 		<table id="resultList"
 			class="datatable table table-striped table-bordered">
@@ -42,6 +41,39 @@
 			</thead>
 		</table>
 	</div>
+
+	<!--  Modal alterar perfil -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Alterar perfil
+						usuário</h4>
+				</div>
+				<div class="modal-body">
+					<select class="combobox">
+						<option></option>
+						<option value="U">Usuário</option>
+						<option value="A">Administrador</option>
+					</select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Salvar alterações</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 	<script type="text/javascript" src="js/lib/jquery-2.1.0.min.js"></script>
 	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/lib/jquery.dataTables.js"></script>

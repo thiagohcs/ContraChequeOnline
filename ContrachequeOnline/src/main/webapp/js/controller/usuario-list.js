@@ -16,6 +16,10 @@ $(function() {
 		location.href = "usuario-edit.html";
 	});
 
+	$("#update").click(function() {
+		
+	});
+	
 	$("#delete").click(function() {
 		var ids = [];
 
@@ -38,6 +42,7 @@ $(function() {
 });
 
 function findAllOk(data) {
+	console.log(data);
 	$('#resultList').dataTable({
 		"aoColumns" : [ {
 			"aTargets" : [ 0 ],
@@ -74,7 +79,7 @@ function findAllOk(data) {
 		"aTargets" : [ 1 ],
 		"mDataProp" : "ativo",
 		"mRender" : function(data, type, full) {
-			return '<a href="usuario-edit.html?id=' + full.id + '">' + full.ativo + '</a>';
+			return '<a href="usuario-edit.html?id=' + full.id + '">' + status(full.ativo) + '</a>';
 		}
 
 	
@@ -82,7 +87,7 @@ function findAllOk(data) {
 		"aTargets" : [ 1 ],
 		"mDataProp" : "perfil",
 		"mRender" : function(data, type, full) {
-			return '<a href="usuario-edit.html?id=' + full.id + '">' + full.perfil + '</a>';
+			return '<a href="usuario-edit.html?id=' + full.id + '">' + perfil(full.perfil) + '</a>';
 		}
 
 	
@@ -117,4 +122,14 @@ function findAllOk(data) {
 
 function removeOk() {
 	UsuarioProxy.findAll().done(findAllOk);
+}
+
+function status(boolean) {
+	if (boolean == true) return "Ativo";
+	else return "Inativo";
+}
+
+function perfil(int) {
+	if (int == 0) return "Usuário";
+	else return "Adiministrador";
 }
