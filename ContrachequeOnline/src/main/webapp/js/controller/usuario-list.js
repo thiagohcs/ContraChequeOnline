@@ -98,8 +98,30 @@ function findAllOk(data) {
 			return '<a href="usuario-edit.html?id=' + full.id + '">' + full.empresa + '</a>';
 		}
 
+		
+		
 							
-		} ],
+		}, {
+		"aTargets" : [ 1 ],
+		"mDataProp" : "empresa",
+		"mRender" : function(data, type, full) {
+			return '<div class="btn-group">' +
+					'<a class="btn btn-primary" href="#">'+
+					'<i class="icon-user icon-white"></i> Ações</a>' + 
+					'<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"'+
+					'href="#"><span class="caret"></span></a>'+
+					'<ul class="dropdown-menu">'+
+						'<li><a href="#"><i class="icon-pencil"></i> Editar</a></li>'+
+						'<li><a href="#"><i class="icon-trash"></i> Apagar</a></li>'+
+						'<li class="divider"></li>' +
+						'<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="i"></i> Tornar Administrador</a></li>'+
+					'</ul>'+
+				'</div>';
+		}
+		
+							
+		}
+		],
 		"oLanguage" : {
 			"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_ registros",
 			"sEmptyTable" : "Não há dados disponíveis na tabela",
