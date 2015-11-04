@@ -2,6 +2,8 @@ package br.com.contracheque.ContrachequeOnline.security;
 
 import java.security.Principal;
 
+import br.com.contracheque.ContrachequeOnline.entity.Usuario;
+import br.com.contracheque.ContrachequeOnline.persistence.UsuarioDAO;
 import br.gov.frameworkdemoiselle.security.Credentials;
 import br.gov.frameworkdemoiselle.security.InvalidCredentialsException;
 import br.gov.frameworkdemoiselle.security.TokenAuthenticator;
@@ -16,8 +18,13 @@ public class AppAuthenticator extends TokenAuthenticator {
 		Principal user = null;
 		final Credentials credentials = Beans.getReference(Credentials.class);
 		final String username = credentials.getUsername();
+		UsuarioDAO dao = new UsuarioDAO();
 
-		if (credentials.getPassword().equals("secret")) {
+		Usuario userBD = dao.findUsuarioByLogin(credentials.getUsername(), credentials.getPassword());
+
+		if (credentials.getUsername().equals(userBD.getLogin())
+				&& credentials.getPassword().equals(userBD.getSenha())) {
+			
 			user = new Principal() {
 
 				@Override
