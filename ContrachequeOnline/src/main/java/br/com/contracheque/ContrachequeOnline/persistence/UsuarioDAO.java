@@ -2,6 +2,8 @@
 package br.com.contracheque.ContrachequeOnline.persistence;
 
 import java.util.List;
+
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 import br.gov.frameworkdemoiselle.template.JPACrud;
@@ -33,10 +35,13 @@ public class UsuarioDAO extends JPACrud<Usuario, Long> {
 		TypedQuery<Usuario> query = getEntityManager().createQuery(ql.toString(), Usuario.class);
 		query.setParameter("log", login);
 		query.setParameter("pass", senha);
-
-		return query.getSingleResult();
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException nre) {
+			return null;
+		}
 	}
-	
+
 	public Usuario findUsuarioByPerfil(String login, String senha) {
 		StringBuffer ql = new StringBuffer();
 		ql.append(" from Usuario u where u.login = :log and u.senha = :pass and u.perfil = 1");
@@ -44,8 +49,11 @@ public class UsuarioDAO extends JPACrud<Usuario, Long> {
 		query.setParameter("log", login);
 		query.setParameter("pass", senha);
 
-		return query.getSingleResult();
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException nre) {
+			return null;
+		}
 	}
 
-	
 }
