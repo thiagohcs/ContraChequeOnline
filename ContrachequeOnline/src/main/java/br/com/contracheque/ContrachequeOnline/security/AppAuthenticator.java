@@ -25,6 +25,8 @@ public class AppAuthenticator extends TokenAuthenticator {
 		if (credentials.getUsername().equals(userBD.getLogin())
 				&& credentials.getPassword().equals(userBD.getSenha())) {
 			
+			
+			//REDIRECIONA PARA O ADM
 			user = new Principal() {
 
 				@Override
