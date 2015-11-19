@@ -22,8 +22,15 @@ $(function() {
 function loginOk(data, textStatus, jqXHR) {
 	App.auth.setToken(jqXHR.getResponseHeader('Set-Token'));
 	App.auth.setLoggedInUser(data);
-
-	App.restoreSavedLocation();
+	
+	Session['User'] = data;
+	alert(Session['User']);
+	if(data.perfil == 0){
+		location.href = 'vizualizarcontracheque.html';
+	}else{
+		location.href = 'usuario-list.html';
+	}
+	
 }
 
 function loginFail(jqXHR) {
