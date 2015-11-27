@@ -10,15 +10,16 @@
 <link rel="stylesheet"
 	href="css/C:\dev\workspaceProjetoSoftware\ContrachequeOnline.css">
 <link rel="stylesheet" href="css/datatables.css">
+<link rel="stylesheet" href="css/font-awesome.css">
 </head>
 <body>
 	<div class="container">
 		<div id="menu"></div>
 		<p>
 			<button id="new" class="btn btn-success">Cadastrar usuário</button>
-			<button id="update" class="btn btn-success" data-toggle="modal"
-				data-target="#myModal" >Atualizar perfil</button>
-			<button id="status" class="btn btn-success">Atualizar Status</button>
+<!-- 			<button id="update" class="btn btn-success" data-toggle="modal" -->
+<!-- 				data-target="#myModal">Atualizar perfil</button> -->
+<!-- 			<button id="status" class="btn btn-success">Atualizar Status</button> -->
 		</p>
 		<table id="resultList"
 			class="datatable table table-striped table-bordered">
@@ -37,7 +38,7 @@
 					<th>Perfil</th>
 
 					<th>Empresa</th>
-					
+
 					<th></th>
 
 				</tr>
@@ -55,10 +56,12 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Alterar perfil
-						usuário</h4>
+					<h4 class="modal-title" id="myModalLabel">Alterar Perfil
+						Usuário</h4>
 				</div>
 				<div class="modal-body">
+					<p>Você realmente deseja tornar este usuário administrador?</p>
+					<label for="nome">Perfil: </label>
 					<select class="combobox">
 						<option></option>
 						<option value="U">Usuário</option>
@@ -74,6 +77,89 @@
 		</div>
 	</div>
 
+	<!--  Modal editar usuario -->
+	<div class="modal fade" id="editUsuario" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Editar usuário</h4>
+				</div>
+				<div class="modal-body">
+					<form class="well" role="form">
+
+						<div class="form-group">
+							<label for="nome">Nome completo: </label> <input id="nome"
+								type="text" class="form-control" maxlength="150"
+								required="required" pattern="[A-Za-z]*"
+								data-error="Por favor, preencha o campo.">
+							<div id="nome-message" class="label label-danger"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="login">CPF: </label> <input id="login" type="text"
+								class="form-control" name="login" maxlength="14"
+								onkeypress="formatar('###.###.###-##', this)"
+								pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required="required"
+								data-error="Por favor, preencha o campo no formato correto.">
+							<div id="login-message" class="label label-danger"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="senha">Senha: </label> <input id="senha"
+								type="password" maxlength="10" required="required"
+								data-error="Por favor, preencha o campo." class="form-control">
+							<div id="senha-message" class="label label-danger"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="empresa">Empresa: </label> <input id="empresa"
+								type="text" class="form-control" maxlength="50"
+								required="required" data-error="Por favor, preencha o campo.">
+							<div id="empresa-message" class="label label-danger"></div>
+						</div>
+
+						<div class="form-group">
+							<button id="save" class="btn btn-primary">Salvar</button>
+							<button id="back" class="btn btn-warning">Voltar</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Salvar
+						alterações</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--  Modal remover usuario -->
+	<div class="modal fade" id="removeUsuario" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Excluir Usuário</h4>
+				</div>
+				<div class="modal-body">
+					<p>Tem certeza que deseja excluir o usuário?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -89,5 +175,6 @@
 	<script type="text/javascript" src="js/proxy/usuario.js"></script>
 	<script type="text/javascript" src="js/controller/menu.js"></script>
 	<script type="text/javascript" src="js/controller/usuario-list.js"></script>
+	<script type="text/javascript" src="js/controller/usuario-edit.js"></script>
 </body>
 </html>

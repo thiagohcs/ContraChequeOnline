@@ -10,6 +10,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import br.com.contracheque.ContrachequeOnline.entity.Usuario;
 import br.gov.frameworkdemoiselle.security.Credentials;
 import br.gov.frameworkdemoiselle.security.LoggedIn;
 import br.gov.frameworkdemoiselle.security.SecurityContext;
@@ -35,7 +36,7 @@ public class AuthREST {
 		securityContext.login();
 		return securityContext.getUser();
 	}
-
+	
 	@POST
 	@LoggedIn
 	@Path("logout")

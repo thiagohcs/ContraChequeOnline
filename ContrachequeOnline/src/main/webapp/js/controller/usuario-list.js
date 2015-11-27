@@ -122,19 +122,19 @@ function findAllOk(data) {
 									"mRender" : function(data, type, full) {
 										return '<div class="dropdown">'
 												+ '<button class="btn btn-default dropdown-toggle" id="dropdownMenu1" type="button" data-toggle="dropdown"'
-												+ 'aria-haspopup="true" aria-expanded="true"> '
+												+ 'aria-haspopup="true" aria-expanded="true"> <i class="icon-pencil"></i>'
 												+ 'Ações'
 												+ '<span class="caret"></span> '
 												+ '</button> '
 												+ '<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">'
-												+ '<li><a href="#"><i class="icon-pencil"></i> Editar</a></li>'
-												+ '<li><a href="#"><i class="icon-trash"></i> Apagar</a></li>'
+												+ '<li><a href="#" data-toggle="modal" data-target="#editUsuario"><i class="icon-pencil"></i> Editar</a></li>'
+												+ '<li><a href="#" data-toggle="modal" data-target="#removeUsuario"><i class="icon-trash"></i> Apagar</a></li>'
 												+ '<li class="divider"></li>'
 												+ '<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="i"></i> Tornar Administrador</a></li>'
 												+ '</ul>' + '</div>';
 									}
 
-	 							} ],
+								} ],
 						"oLanguage" : {
 							"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_ registros",
 							"sEmptyTable" : "Não há dados disponíveis na tabela",
